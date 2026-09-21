@@ -1,0 +1,22 @@
+What can i mutate my const?
+
+Javascript:
+isBlurry 
+isBlurry = false 
+
+students ={name:'Brayden'}
+
+In Javascript everything is an object 
+
+student.isfunny // you can find an attribute but you can deefine it
+
+students.isfunny = true 
+
+student 
+>> true
+
+functions are also objects
+
+array:
+Array(10) ...10 blocks of memory //in other languages
+Array in javacript is probably a link list...object pointed to another 
