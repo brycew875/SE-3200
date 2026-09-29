@@ -1,0 +1,6 @@
+Interface 
+	- Interact w/ machine 
+	- medium 
+	-visual (usually)
+	- command line tool 
+

@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Random Pokémon Generator</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SE 3200 - Project 1</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>🎲 Random Pokémon</h1>
-        <p>Generate a random Pokémon!</p>
+  <main class="page-wrapper">
+    <!-- Requirement: Name in <h1> tag -->
+    <h1>Alex Morgan</h1>
+    
+    <!-- Requirement: Image -->
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Monument_Valley_UT.jpg/800px-Monument_Valley_UT.jpg" 
+      alt="Monument Valley Navajo Nation" 
+      class="profile-img"
+    >
 
-        <button id="generateButton">
-            Generate Pokémon
-        </button>
-    </header>
+    <!-- Requirement: Paragraph about you -->
+    <p id="bio">
+      Hi! I'm Bryce and I'm taking SE 3200 this semester. I decided to center this project around Navajo (Diné) culture and language because I'm currently preparing for an oral exam on the topic. I wanted to build something interactive that helps me practice basic vocabulary words while learning how JavaScript interacts with the DOM.
+    </p>
 
-    <main>
+    <!-- Requirement: <ul> with 3 application ideas -->
+    <h2>3 App Ideas for This Semester</h2>
+    <ul>
+      <li><strong>Diné Vocabulary Flashcards:</strong> A simple flashcard app to practice daily Navajo phrases with audio pronunciation clips.</li>
+      <li><strong>Navajo Nation Landmarks Map:</strong> An interactive map showing historical sites and sacred mountains across Navajo land.</li>
+      <li><strong>Rug Pattern Generator:</strong> A canvas app to experiment with traditional geometric weaving patterns.</li>
+    </ul>
 
-        <section id="pokemonContainer">
-            <h2>Your Pokémon</h2>
+    <!-- Interactive Section -->
+    <div id="flashcard-box" class="card">
+      <h3 id="word">Yá’át’ééh</h3>
+      <p id="translation">Translation: Hello / It is good</p>
+      <button id="next-btn">Next Word</button>
+    </div>
+  </main>
 
-            <div id="pokemonCard">
-                <p>Click the button to generate a Pokémon!</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Previous Pokémon</h2>
-
-            <div id="history"></div>
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
