@@ -1,34 +1,28 @@
-// DOM Querying - grabbing HTML elements
-const nextBtn = document.getElementById("next-btn");
-const wordText = document.getElementById("word");
-const translationText = document.getElementById("translation");
-const flashcardBox = document.getElementById("flashcard-box");
-
-// Array of Navajo vocabulary words
+// Array holding our word list
 const words = [
-  { word: "Yá’át’ééh", translation: "Hello / It is good" },
-  { word: "Ahéhee’", translation: "Thank you" },
-  { word: "Nizhóní", translation: "Beautiful" },
-  { word: "Ałchiní", translation: "Children / Family" },
-  { word: "Hózhǫ́", translation: "Harmony / Peace" }
+  { navajo: "Yá'át'ééh", english: "Hello / It is good" },
+  { navajo: "Ahéhee'", english: "Thank you" },
+  { navajo: "Ałchiní", english: "Children" },
+  { navajo: "Shimá", english: "My Mother" },
+  { navajo: "Diné", english: "The People / Navajo" }
 ];
 
-let count = 0;
+let index = 0;
 
-// Event Listener - triggers when button is clicked
-nextBtn.addEventListener("click", function() {
-  // Move to next word in array
-  count = count + 1;
-  
-  // Loop back to start if we hit the end
-  if (count >= words.length) {
-    count = 0;
+//id
+const wordTitle = document.getElementById("navajo-word");
+const wordTranslation = document.getElementById("english-word");
+const nextButton = document.getElementById("change-btn");
+
+function showNextWord() {
+  index = index + 1;
+
+  if (index >= words.length) {
+    index = 0;
   }
 
-  // DOM Manipulation - changing text contents
-  wordText.textContent = words[count].word;
-  translationText.textContent = "Translation: " + words[count].translation;
+  wordTitle.textContent = words[index].navajo;
+  wordTranslation.textContent = "Translation: " + words[index].english;
+}
 
-  // DOM Manipulation - toggling visual background style
-  flashcardBox.classList.toggle("turquoise-bg");
-});
+nextButton.addEventListener("click", showNextWord);

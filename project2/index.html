@@ -2,43 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SE 3200 - Project 1</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <main class="page-wrapper">
-    <!-- Requirement: Name in <h1> tag -->
-    <h1>Alex Morgan</h1>
-    
-    <!-- Requirement: Image -->
-    <img 
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Monument_Valley_UT.jpg/800px-Monument_Valley_UT.jpg" 
-      alt="Monument Valley Navajo Nation" 
-      class="profile-img"
-    >
+  <!-- Requirement 1: h1 tag with your name -->
+  <h1>Yá'át'ééh! Welcome to Learning Navajo </h1>
 
-    <!-- Requirement: Paragraph about you -->
-    <p id="bio">
-      Hi! I'm Bryce and I'm taking SE 3200 this semester. I decided to center this project around Navajo (Diné) culture and language because I'm currently preparing for an oral exam on the topic. I wanted to build something interactive that helps me practice basic vocabulary words while learning how JavaScript interacts with the DOM.
-    </p>
+  <!-- Requirement 2: Image -->
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500" alt="Southwest scenery">
 
-    <!-- Requirement: <ul> with 3 application ideas -->
-    <h2>3 App Ideas for This Semester</h2>
-    <ul>
-      <li><strong>Diné Vocabulary Flashcards:</strong> A simple flashcard app to practice daily Navajo phrases with audio pronunciation clips.</li>
-      <li><strong>Navajo Nation Landmarks Map:</strong> An interactive map showing historical sites and sacred mountains across Navajo land.</li>
-      <li><strong>Rug Pattern Generator:</strong> A canvas app to experiment with traditional geometric weaving patterns.</li>
-    </ul>
+  <!-- Requirement 3: Paragraph about you -->
+  <p>
+    Welcome to my webpage! I am a student in SE 3200 interested in web development and language learning. My main focus this semester is building simple digital tools to help people practice and learn Navajo (Diné Bizaad).
+  </p>
 
-    <!-- Interactive Section -->
-    <div id="flashcard-box" class="card">
-      <h3 id="word">Yá’át’ééh</h3>
-      <p id="translation">Translation: Hello / It is good</p>
-      <button id="next-btn">Next Word</button>
-    </div>
-  </main>
+  <!-- Requirement 4: Unordered list with 3 app ideas -->
+  <h2>App Ideas for This Semester</h2>
+  <ul>
+    <li><strong>Navajo Audio Dictionary:</strong> A site where users can click a word to hear audio pronunciations.</li>
+    <li><strong>Flashcard App:</strong> A study tool for memorizing Navajo vocabulary.</li>
+    <li><strong>Daily Phrase Widget:</strong> An app that displays a new Navajo phrase every day.</li>
+  </ul>
+
+  <!-- Interactive Section for JS requirements -->
+  <div id="word-box">
+    <h2 id="navajo-word">Yá'át'ééh</h2>
+    <p id="english-word">Translation: Hello / It is good</p>
+    <button id="change-btn">Learn Next Word</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
