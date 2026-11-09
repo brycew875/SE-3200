@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diné Art Registry — Collection Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Diné Art Registry</h1>
+    <p>Authentic Navajo Textiles, Silversmithing & Fine Art Inventory</p>
+  </header>
+
+  <main class="container">
+    <!-- Read-Only Inspection Panel (Retrieve Endpoint Target) -->
+    <section id="detail-panel" class="panel-detail hidden" aria-live="polite">
+      <h3>Item Details (Retrieve Endpoint Response)</h3>
+      <div id="detail-content"></div>
+      <button id="close-detail-btn" class="btn btn-secondary" style="margin-top: 1rem;">Close Inspector</button>
+    </section>
+
+    <!-- Main Collection View -->
+    <section id="list-view">
+      <div class="action-bar">
+        <h2>Registered Artifacts</h2>
+        <button id="show-create-btn" class="btn btn-primary">+ Register Item</button>
+      </div>
+      <div id="craft-grid" class="grid-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- Create / Edit Resource Form View -->
+    <section id="form-view" class="hidden">
+      <div class="form-card">
+        <h2 id="form-title" style="font-family: 'Cinzel', serif; margin-bottom: 1.5rem;">Register New Item</h2>
+        
+        <form id="craft-form" novalidate>
+          <input type="hidden" id="craft-id">
+
+          <div class="form-group">
+            <label for="title">Item Title / Description</label>
+            <input type="text" id="title" class="form-control" placeholder="e.g. Wide Ruins Weaving" required>
+          </div>
+
+          <div class="form-group">
+            <label for="artist">Artisan / Silversmith</label>
+            <input type="text" id="artist" class="form-control" placeholder="e.g. Grace Nez" required>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Craft Category</label>
+            <select id="category" class="form-control" required>
+              <option value="">Select Category...</option>
+              <option value="Weaving">Weaving</option>
+              <option value="Jewelry">Jewelry</option>
+              <option value="Sandpainting">Sandpainting</option>
+              <option value="Pottery">Pottery</option>
+              <option value="Woodcarving">Woodcarving</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Valuation ($ USD)</label>
+            <input type="number" id="price" class="form-control" step="0.01" min="0" placeholder="0.00" required>
+          </div>
+
+          <div class="form-group">
+            <label for="year_created">Year Crafted</label>
+            <input type="number" id="year_created" class="form-control" min="1800" max="2026" placeholder="2024" required>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="cancel-form-btn" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Entity</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
