@@ -1,31 +1,28 @@
-# Diné Art Registry - Resourceful API Project
+# Diné Bikéyah — Navajo Nation Landmarks Manager
 
-An enterprise RESTful Web Application designed to manage an authentic inventory of Navajo textiles, silver jewelry, sandpaintings, and pottery using standard Python, SQLite, and vanilla ES6 JavaScript.
+A full-stack CRUD web application for cataloging and managing significant cultural, historic, and geographic landmarks across the Navajo Nation. Built with a Python RESTful API server, SQLite persistence, and a vanilla HTML/CSS/JavaScript client.
 
----
+## Resource & Attributes
 
-## Resource Definition
+- **Resource Name:** `landmarks` (singular: `Landmark`)
+- **Attributes:**
+  - `id` (`INTEGER`): Unique primary key identifier for each landmark.
+  - `name` (`TEXT`): Common English name of the landmark.
+  - `navajo_name` (`TEXT`): Traditional name in *Diné Bizaad* (the Navajo language).
+  - `region` (`TEXT`): Navajo Nation Agency and state location (e.g., Chinle Agency, Northern Agency).
+  - `category` (`TEXT`): Classification of the site (e.g., Sacred Landmark, Tribal Park, National Monument, Capital & Historic Site, Ancestral Site).
+  - `elevation_ft` (`INTEGER`): Elevation of the site in feet above sea level.
+  - `description` (`TEXT`): Summary of the landmark's cultural, historical, and geographic significance.
 
-- **Managed Entity:** `crafts` (Navajo Fine Art Artifact)
-
-### Data Attributes Specification
-1. `id` (INTEGER, Primary Key) - Auto-incrementing unique identifier.
-2. `title` (TEXT, Required) - Descriptive title of the craft piece.
-3. `artist` (TEXT, Required) - Full name of the Navajo artisan or silversmith.
-4. `category` (TEXT, Required) - Classification (e.g., *Weaving*, *Jewelry*, *Sandpainting*, *Pottery*, *Woodcarving*).
-5. `price` (REAL, Required) - Market valuation expressed in USD ($).
-6. `year_created` (INTEGER, Required) - 4-digit calendar year of creation.
-
----
-
-## Database Schema (SQLite)
+## Database Schema
 
 ```sql
-CREATE TABLE IF NOT EXISTS crafts (
+CREATE TABLE IF NOT EXISTS landmarks (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    artist TEXT NOT NULL,
+    name TEXT NOT NULL,
+    navajo_name TEXT NOT NULL,
+    region TEXT NOT NULL,
     category TEXT NOT NULL,
-    price REAL NOT NULL,
-    year_created INTEGER NOT NULL
+    elevation_ft INTEGER NOT NULL,
+    description TEXT NOT NULL
 );

@@ -3,83 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diné Art Registry — Collection Management</title>
+  <title>Diné Bikéyah — Navajo Nation Landmarks Directory</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <header>
-    <h1>Diné Art Registry</h1>
-    <p>Authentic Navajo Textiles, Silversmithing & Fine Art Inventory</p>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <!-- Custom Navajo-inspired geometric Four Sacred Peaks & weaving motif -->
+        <svg class="brand-emblem" viewBox="0 0 80 80" width="64" height="64" aria-hidden="true">
+          <rect x="4" y="4" width="72" height="72" rx="12" fill="#231F20" stroke="#C88A2B" stroke-width="3"/>
+          <polygon points="40,14 66,40 40,66 14,40" fill="none" stroke="#1D7874" stroke-width="3"/>
+          <polygon points="40,22 58,40 40,58 22,40" fill="#A8432A"/>
+          <polygon points="40,30 50,40 40,50 30,40" fill="#F7F3EB"/>
+          <circle cx="40" cy="40" r="3.5" fill="#231F20"/>
+        </svg>
+        <div>
+          <p class="eyebrow">Navajo Nation Cultural &amp; Geographic Registry</p>
+          <h1>Diné Bikéyah Landmarks</h1>
+        </div>
+      </div>
+      <button id="open-create-btn" class="btn btn-primary" type="button">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+          <path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        Add New Landmark
+      </button>
+    </div>
   </header>
 
   <main class="container">
-    <!-- Read-Only Inspection Panel (Retrieve Endpoint Target) -->
-    <section id="detail-panel" class="panel-detail hidden" aria-live="polite">
-      <h3>Item Details (Retrieve Endpoint Response)</h3>
-      <div id="detail-content"></div>
-      <button id="close-detail-btn" class="btn btn-secondary" style="margin-top: 1rem;">Close Inspector</button>
-    </section>
+    <div id="status-banner" class="status-banner hidden" role="status" aria-live="polite"></div>
 
-    <!-- Main Collection View -->
-    <section id="list-view">
-      <div class="action-bar">
-        <h2>Registered Artifacts</h2>
-        <button id="show-create-btn" class="btn btn-primary">+ Register Item</button>
+    <!-- Create / Update Form Section -->
+    <section id="form-section" class="card form-card hidden" aria-labelledby="form-heading">
+      <div class="form-header">
+        <h2 id="form-heading">Add New Landmark</h2>
+        <button id="close-form-btn" class="btn btn-ghost" type="button">Close</button>
       </div>
-      <div id="craft-grid" class="grid-container">
-        <!-- Rendered dynamically -->
-      </div>
-    </section>
 
-    <!-- Create / Edit Resource Form View -->
-    <section id="form-view" class="hidden">
-      <div class="form-card">
-        <h2 id="form-title" style="font-family: 'Cinzel', serif; margin-bottom: 1.5rem;">Register New Item</h2>
-        
-        <form id="craft-form" novalidate>
-          <input type="hidden" id="craft-id">
+      <form id="landmark-form">
+        <input type="hidden" id="landmark-id" name="id">
 
+        <div class="form-grid">
           <div class="form-group">
-            <label for="title">Item Title / Description</label>
-            <input type="text" id="title" class="form-control" placeholder="e.g. Wide Ruins Weaving" required>
+            <label for="name">English Name *</label>
+            <input type="text" id="name" name="name" placeholder="e.g., Canyon de Chelly" required>
           </div>
 
           <div class="form-group">
-            <label for="artist">Artisan / Silversmith</label>
-            <input type="text" id="artist" class="form-control" placeholder="e.g. Grace Nez" required>
+            <label for="navajo_name">Diné Bizaad Name *</label>
+            <input type="text" id="navajo_name" name="navajo_name" placeholder="e.g., Tséyiʼ" required>
           </div>
 
           <div class="form-group">
-            <label for="category">Craft Category</label>
-            <select id="category" class="form-control" required>
-              <option value="">Select Category...</option>
-              <option value="Weaving">Weaving</option>
-              <option value="Jewelry">Jewelry</option>
-              <option value="Sandpainting">Sandpainting</option>
-              <option value="Pottery">Pottery</option>
-              <option value="Woodcarving">Woodcarving</option>
+            <label for="region">Agency / Region *</label>
+            <select id="region" name="region" required>
+              <option value="">Select an Agency...</option>
+              <option value="Chinle Agency (AZ)">Chinle Agency (AZ)</option>
+              <option value="Eastern Agency (NM)">Eastern Agency (NM)</option>
+              <option value="Fort Defiance Agency (AZ)">Fort Defiance Agency (AZ)</option>
+              <option value="Northern Agency (NM)">Northern Agency (NM)</option>
+              <option value="Western Agency (AZ / UT)">Western Agency (AZ / UT)</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="price">Valuation ($ USD)</label>
-            <input type="number" id="price" class="form-control" step="0.01" min="0" placeholder="0.00" required>
+            <label for="category">Category *</label>
+            <select id="category" name="category" required>
+              <option value="">Select a Category...</option>
+              <option value="Sacred Landmark">Sacred Landmark</option>
+              <option value="Tribal Park">Tribal Park</option>
+              <option value="National Monument">National Monument</option>
+              <option value="Capital & Historic Site">Capital &amp; Historic Site</option>
+              <option value="Ancestral Site">Ancestral Site</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label for="year_created">Year Crafted</label>
-            <input type="number" id="year_created" class="form-control" min="1800" max="2026" placeholder="2024" required>
+            <label for="elevation_ft">Elevation (ft) *</label>
+            <input type="number" id="elevation_ft" name="elevation_ft" placeholder="e.g., 5500" required>
           </div>
 
-          <div class="form-actions">
-            <button type="button" id="cancel-form-btn" class="btn btn-secondary">Cancel</button>
-            <button type="submit" class="btn btn-primary">Save Entity</button>
+          <div class="form-group form-group-full">
+            <label for="description">Historical &amp; Cultural Significance *</label>
+            <textarea id="description" name="description" rows="3" placeholder="Describe the geographic and cultural importance of this landmark..." required></textarea>
           </div>
-        </form>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submit-btn" class="btn btn-primary">Save Landmark</button>
+          <button type="button" id="cancel-form-btn" class="btn btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Collection Controls & List -->
+    <section class="collection-section" aria-labelledby="collection-heading">
+      <div class="collection-toolbar">
+        <div>
+          <h2 id="collection-heading">Recorded Landmarks</h2>
+          <p id="record-count" class="muted-text">Loading records...</p>
+        </div>
+        <div class="filter-controls">
+          <label for="search-input" class="sr-only">Filter landmarks</label>
+          <input type="search" id="search-input" placeholder="Filter by name, Diné name, or region...">
+        </div>
       </div>
+
+      <div id="landmarks-list" class="landmarks-grid"></div>
     </section>
   </main>
+
+  <!-- Read-Only Detail Modal (Uses Retrieve GET /landmarks/<id>) -->
+  <div id="detail-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span id="modal-category" class="badge badge-turquoise"></span>
+          <h2 id="modal-title"></h2>
+          <p id="modal-navajo-name" class="dine-subtitle"></p>
+        </div>
+        <button id="close-modal-btn" class="btn btn-ghost" type="button">Close</button>
+      </div>
+      <dl class="detail-list">
+        <div>
+          <dt>Agency / Region</dt>
+          <dd id="modal-region"></dd>
+        </div>
+        <div>
+          <dt>Elevation</dt>
+          <dd id="modal-elevation"></dd>
+        </div>
+        <div class="detail-full">
+          <dt>Significance</dt>
+          <dd id="modal-description"></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
